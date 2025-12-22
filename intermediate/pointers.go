@@ -10,7 +10,7 @@ func main() {
 	ptr = &a // Referencing a pointer
 
 	fmt.Println(a)
-	// fmt.Println(ptr)
+	// fmt.Println(ptr) // 0xc0000aa008
 	// fmt.Println(*ptr) // derefencing a pointer
 
 	if ptr == nil {
