@@ -1,4 +1,6 @@
-package main
+package intermediate
+
+import "fmt"
 
 func SliceIndex[S ~[]E, E comparable](s S, v E) int{
 	for i := range s {
@@ -24,15 +26,30 @@ func (lst *List[T]) Push(v T){
 		lst.head = &element[T]{val: v}
 		lst.tail = lst.head
 	} else {
-		lst.tail = &element[T]{val: v}
+		lst.tail.next = &element[T]{val: v}
 		lst.tail = lst.tail.next
 	}
 }
 
 func (lst *List[T]) AllElements() []T{
-	
+	var elems []T
+	for e := lst.head; e != nil; e = e.next{
+		elems = append(elems, e.val)
+	}
+	return elems
 }
 
 func main() {
-	
+	var s = []string{"foo", "bar", "zoo"}
+
+	fmt.Println("index of zoo:", SliceIndex(s, "zoo"))
+
+	_ = SliceIndex[[]string, string](s, "zoo")
+
+	lst := List[int]{}
+	lst.Push(10)
+	lst.Push(20)
+	lst.Push(30)
+
+	fmt.Println("All elements in list:", lst.AllElements())
 }
