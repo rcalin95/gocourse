@@ -1,4 +1,4 @@
-package main
+package funstuff
 
 func ping(pings chan<- string, msg string) {
 	pings <- msg
